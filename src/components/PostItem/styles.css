@@ -1,0 +1,8 @@
+.post {
+  display: flex;
+  padding: 16px;
+  border: 2px solid teal;
+  margin-top: 16px;
+  justify-content: space-between;
+  align-items: center;
+}
