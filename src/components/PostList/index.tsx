@@ -20,7 +20,7 @@ export const PostList = (props: PostListProps) => {
     <div>
       <h1 style={{ textAlign: "center" }}>{props.title}</h1>
       <TransitionGroup>
-        {props.posts.map((post, idx) => {
+        {props.posts.map((post) => {
           const nodeRef = React.createRef<any>();
           return (
             <CSSTransition
@@ -30,7 +30,7 @@ export const PostList = (props: PostListProps) => {
               classNames="post"
             >
               <PostItem
-                number={idx + 1}
+                number={post.id}
                 post={post}
                 ref={nodeRef}
                 onDelete={props.onDelete}
