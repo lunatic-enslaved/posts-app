@@ -1,8 +1,9 @@
 import React from "react";
-
-import "./styles.css";
+import { NavLink } from "react-router-dom";
 
 import { Button } from "../UI/Button";
+
+import classes from "./index.module.css";
 
 export interface Post {
   id: number;
@@ -19,17 +20,18 @@ interface PostItemProps {
 export const PostItem = React.forwardRef<HTMLDivElement, PostItemProps>(
   (props, ref) => {
     return (
-      <div className="post" ref={ref}>
-        <div className="post__content">
+      <div className={classes.post} ref={ref}>
+        <div>
           <strong>
             {props.number}. {props.post.title}
           </strong>
 
-          <div className="post__content">
+          <div>
             <p>{props.post.body}</p>
           </div>
         </div>
-        <div className="post__buttons">
+        <div className={classes.buttons}>
+          <NavLink to={"/posts/" + props.post.id}>Открыть</NavLink>
           <Button onClick={() => props.onDelete(props.post)}>Удалить</Button>
         </div>
       </div>

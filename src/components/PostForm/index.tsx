@@ -12,7 +12,7 @@ export const PostForm = (props: PostFormProps) => {
   const [title, setTitle] = React.useState("");
   const [body, setBody] = React.useState("");
 
-  const addNewPost = (e: React.MouseEvent) => {
+  const addNewPost = (e: React.FormEvent) => {
     e.preventDefault();
     props.onSubmit({
       id: Date.now(),
@@ -24,20 +24,22 @@ export const PostForm = (props: PostFormProps) => {
   };
 
   return (
-    <form>
+    <form onSubmit={addNewPost}>
       <Input
         value={title}
         onChange={(e) => setTitle(e.currentTarget?.value)}
         type="text"
-        placeholder="Название поста"
+        placeholder="Название поста *"
+        required
       />
       <Input
         value={body}
         onChange={(e) => setBody(e.currentTarget?.value)}
         type="text"
-        placeholder="Описание поста"
+        placeholder="Описание поста *"
+        required
       />
-      <Button onClick={addNewPost}>Создать пост</Button>
+      <Button>Создать пост</Button>
     </form>
   );
 };

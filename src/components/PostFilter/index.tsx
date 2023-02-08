@@ -6,6 +6,7 @@ import { Input } from "../UI/Input";
 export interface Filter {
   sort: string;
   query: string;
+  limit: number;
 }
 
 interface PostFilterProps {
@@ -16,6 +17,12 @@ interface PostFilterProps {
 const sortOptions = [
   { title: "По названию", value: "title" },
   { title: "По описанию", value: "body" },
+];
+const limitOptions = [
+  { title: "10", value: "10" },
+  { title: "20", value: "20" },
+  { title: "50", value: "50" },
+  { title: "100", value: "100" },
 ];
 
 export const PostFilter = (props: PostFilterProps) => {
@@ -33,6 +40,14 @@ export const PostFilter = (props: PostFilterProps) => {
         options={sortOptions}
         value={props.filter.sort}
         onChange={(value) => props.onFilter({ ...props.filter, sort: value })}
+      />
+      <Select
+        topValue="Количество записей на страницу"
+        options={limitOptions}
+        value={props.filter.sort}
+        onChange={(value) =>
+          props.onFilter({ ...props.filter, limit: parseInt(value) })
+        }
       />
     </div>
   );
